@@ -34,6 +34,12 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
         ],
     }
 
+    const cssLoader = {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+        exclude: /\.module\.css$/
+    }
+
     const cssLoaderWithModules = {
         loader: "css-loader",
         options: {
@@ -80,6 +86,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 
     return [
         assetLoader,
+        cssLoader,
         scssLoader,
         // tsLoader,
         babelLoader,

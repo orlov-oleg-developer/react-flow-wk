@@ -1,7 +1,9 @@
 import {createRoot} from "react-dom/client";
-import {App} from "./components/App/App";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Suspense} from "react";
+import Flow from "./Flow";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 const root = document.getElementById('root')
 
@@ -14,12 +16,14 @@ const container = createRoot(root)
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App />,
+        element: <Flow />,
         children: [
         ]
     },
 ]);
 
 container.render(
-    <RouterProvider router={router} />
+    <Provider store={store}>
+        <RouterProvider router={router} />
+    </Provider>
 )
